@@ -1,0 +1,84 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+# These aren't random placeholder rows -- each one exists to exercise a
+# specific piece of behavior the tests check: a great-deal active
+# listing, a mediocre active listing, and an inactive one, so tests can
+# assert on filtering/sorting/scoring with real, meaningful data instead
+# of guessing at what "MyString" would do.
+
+# A strong match: clean title, low mileage, reliable make, priced under
+# the great-deal threshold -- should show up first on the dashboard.
+great_fit:
+  source: craigslist
+  listing_id: "craigslist-great-fit"
+  title: "2019 Honda Fit LX Clean Title 42,000 mi Automatic"
+  price_usd: 5500.00
+  url: "https://phoenix.craigslist.org/cto/great-fit.html"
+  condition: null
+  location: "Tempe, AZ"
+  year: 2019
+  make: Honda
+  model: Fit
+  mileage: 42000
+  transmission: Automatic
+  doors: 4
+  title_status: Clean
+  fuel_type: Gas
+  seller_type: private_party
+  deal_score: 92.0
+  is_great_deal: true
+  first_seen_at: 2026-08-19 06:00:00
+  last_seen_at: 2026-08-20 06:00:00
+  is_active: true
+
+# A weaker but still-active match: higher mileage, higher price, still
+# above the great-deal cutoff -- should sort after great_fit and not
+# count toward the great_deal_count.
+mediocre_versa:
+  source: ebay
+  listing_id: "ebay-mediocre-versa"
+  title: "2016 Nissan Versa SV 130,000 mi Automatic"
+  price_usd: 7800.00
+  url: "https://www.ebay.com/itm/9988776655"
+  condition: "Used"
+  location: null
+  year: 2016
+  make: Nissan
+  model: Versa
+  mileage: 130000
+  transmission: Automatic
+  doors: 4
+  title_status: Clean
+  fuel_type: Gas
+  seller_type: null
+  deal_score: 55.0
+  is_great_deal: false
+  first_seen_at: 2026-08-18 06:00:00
+  last_seen_at: 2026-08-20 06:00:00
+  is_active: true
+
+# Inactive listing (not seen in the most recent scrape) -- exists
+# specifically to make sure the `active` scope, and the dashboard, both
+# exclude it from totals and results.
+sold_spark:
+  source: cargurus
+  listing_id: "cargurus-sold-spark"
+  title: "2017 Chevrolet Spark LS 60,000 mi Automatic"
+  price_usd: 5200.00
+  url: "https://www.cargurus.com/Cars/details/sold-spark"
+  condition: "Used"
+  location: "Mesa, AZ"
+  year: 2017
+  make: Chevrolet
+  model: Spark
+  mileage: 60000
+  transmission: Automatic
+  doors: 4
+  title_status: Clean
+  fuel_type: Gas
+  seller_type: dealer
+  deal_score: 88.0
+  is_great_deal: true
+  first_seen_at: 2026-08-01 06:00:00
+  last_seen_at: 2026-08-05 06:00:00
+  is_active: false
